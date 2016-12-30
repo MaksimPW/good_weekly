@@ -1,0 +1,2 @@
+class GoodWeek < ApplicationRecord
+end
