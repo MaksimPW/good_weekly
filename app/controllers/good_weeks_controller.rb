@@ -1,4 +1,5 @@
 class GoodWeeksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_good_week, only: :show
 
   def index
