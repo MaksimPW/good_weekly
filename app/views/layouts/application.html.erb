@@ -10,7 +10,11 @@
 
   <body>
     <div class="container">
-      <%= render 'layouts/navbar' %>
+      <% if current_user %>
+        <%= render 'layouts/navbar' %>
+      <% else %>
+        <%= render 'layouts/unauth' %>
+      <% end %>
       <div><%= yield %></div>
     </div>
   </body>
