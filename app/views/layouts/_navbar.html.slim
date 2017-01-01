@@ -6,7 +6,7 @@ nav.navbar.navbar-default
       = link_to t('application_name'), root_path, class: 'navbar-brand'
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
-        li.active
+        li class=('active' if current_page?(:current_week))
           = link_to t('menu.current_week'), current_week_path
         li
           = link_to t('menu.calendar'), root_path
