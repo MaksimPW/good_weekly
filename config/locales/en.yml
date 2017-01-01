@@ -1,2 +1,13 @@
 en:
   application_name: 'GoodWeekly'
+  menu:
+    title: 'GoodWeekly'
+    current_week: 'Current Week'
+    calendar: 'Calendar'
+    books: 'Books'
+    persons: 'Peoples'
+    sign_up: 'Sign up'
+    sign_in: 'Sign on'
+    sign_out: 'Sign out'
+  calendar:
+    week: 'Week'

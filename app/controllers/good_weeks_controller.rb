@@ -2,11 +2,9 @@ class GoodWeeksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_good_week, only: :show
 
-  def index
-    @good_weeks = GoodWeek.all
-  end
-
-  def show
+  def current_week
+    @good_week = GoodWeek.find_by(monday: DateTime.now.beginning_of_week.to_date)
+    render :show
   end
 
   private

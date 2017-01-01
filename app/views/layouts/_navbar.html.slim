@@ -7,16 +7,16 @@ nav.navbar.navbar-default
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
         li.active
-          = link_to 'Текущая неделя', root_path
+          = link_to t('menu.current_week'), current_week_path
         li
-          = link_to 'Календарь', root_path
+          = link_to t('menu.calendar'), root_path
         li
-          = link_to 'Книги', root_path
+          = link_to t('menu.books'), root_path
         li
-          = link_to 'Люди', root_path
+          = link_to t('menu.persons'), root_path
       ul.nav.navbar-nav.navbar-right
         - if current_user
-          li= link_to 'Выход', destroy_user_session_path, method: :delete
+          li= link_to t('menu.sign_out'), destroy_user_session_path, method: :delete
         - else
-          li= link_to 'Вход', new_user_session_path, method: :get
-          li= link_to 'Регистрация', new_user_registration_path, method: :get
+          li= link_to t('menu.sign_in'), new_user_session_path, method: :get
+          li= link_to t('menu.sign_up'), new_user_registration_path, method: :get
