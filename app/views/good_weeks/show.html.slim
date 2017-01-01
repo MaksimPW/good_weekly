@@ -1,2 +1,4 @@
 h1
   = "#{@good_week.number_of_year} неделя #{@good_week.monday.year}"
+= week_calendar number_of_weeks: 1 do |date|
+  = date
