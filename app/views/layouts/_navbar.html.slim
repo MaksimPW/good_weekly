@@ -1,0 +1,22 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+      = link_to t('application_name'), root_path, class: 'navbar-brand'
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li.active
+          = link_to 'Текущая неделя', root_path
+        li
+          = link_to 'Календарь', root_path
+        li
+          = link_to 'Книги', root_path
+        li
+          = link_to 'Люди', root_path
+      ul.nav.navbar-nav.navbar-right
+        - if current_user
+          li= link_to 'Выход', destroy_user_session_path, method: :delete
+        - else
+          li= link_to 'Вход', new_user_session_path, method: :get
+          li= link_to 'Регистрация', new_user_registration_path, method: :get
