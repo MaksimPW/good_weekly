@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :good_weeks
+
+  def author_of?(object)
+    id == object.user_id
+  end
 end
