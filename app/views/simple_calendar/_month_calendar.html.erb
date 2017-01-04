@@ -21,7 +21,7 @@
           <% good_week = GoodWeek.find_by(monday: week.first) %>
           <td>
             <% if good_week %>
-              <%= link_to good_week.try(:number_of_year), good_week %>
+              <%= link_to good_week.try(:number_of_year), week_path(good_week.year, good_week.number_of_year) %>
             <% else %>
               <%= week.first.cweek %>
             <% end %>

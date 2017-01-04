@@ -4,7 +4,8 @@ class GoodWeeksController < ApplicationController
   before_action :week_now, only: [:current_week, :show]
 
   def current_week
-    authorize @week_now
+    @good_week = @week_now
+    authorize @good_week
     render :show
   end
 
@@ -19,7 +20,7 @@ class GoodWeeksController < ApplicationController
   end
 
   def set_good_week
-    @good_week = GoodWeek.find(params[:id])
+    @good_week = current_user.good_weeks.find_by_number_of_year_and_week(params[:year], params[:week]) if current_user
   end
 
   def good_week_params
