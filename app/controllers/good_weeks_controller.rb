@@ -17,10 +17,18 @@ class GoodWeeksController < ApplicationController
   private
   def week_now
     @week_now = GoodWeek.find_by(monday: DateTime.now.beginning_of_week.to_date)
+    unless @week_now
+      monday = DateTime.now.beginning_of_week
+      @week_now = GoodWeek.new(monday: monday, user: current_user)
+    end
   end
 
   def set_good_week
     @good_week = current_user.good_weeks.find_by_number_of_year_and_week(params[:year], params[:week]) if current_user
+    unless @good_week
+      monday = Date.commercial(params[:year].to_i, params[:week].to_i, 1)
+      @good_week = GoodWeek.new(monday: monday, user: current_user)
+    end
   end
 
   def good_week_params

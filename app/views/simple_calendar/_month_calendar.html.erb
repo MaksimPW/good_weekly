@@ -23,7 +23,7 @@
             <% if good_week %>
               <%= link_to good_week.try(:number_of_year), week_path(good_week.year, good_week.number_of_year) %>
             <% else %>
-              <%= week.first.cweek %>
+              <%= link_to week.first.cweek ,week_path(week.first.year, week.first.cweek) %>
             <% end %>
           </td>
           <% week.each do |day| %>
