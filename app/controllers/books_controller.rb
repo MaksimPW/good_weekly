@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.where(user: current_user)
   end
 
   def show
-    @book = Book.find(params[:id])
     authorize @book
   end
 
@@ -24,12 +24,10 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
     authorize @book
   end
 
   def update
-    @book = Book.find(params[:id])
     authorize @book
     if @book.update_attributes(book_params)
       redirect_to book_path(@book)
@@ -37,7 +35,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
     authorize @book
     if @book.delete
       redirect_to books_path
@@ -47,5 +44,9 @@ class BooksController < ApplicationController
   private
   def book_params
     params.require(:book).permit(:name, :description, :author, :comment, :rating)
+  end
+
+  def load_book
+    @book = Book.find(params[:id])
   end
 end
