@@ -1,0 +1,18 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+      = link_to t('application_name'), root_path, class: 'navbar-brand'
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li class=('active' if current_page?(:current_week))
+          = link_to t('menu.current_week'), current_week_path
+        li
+          = link_to t('menu.calendar'), root_path
+        li
+          = link_to t('menu.books'), root_path
+        li
+          = link_to t('menu.persons'), root_path
+      ul.nav.navbar-nav.navbar-right
+        li= link_to t('menu.sign_out'), destroy_user_session_path, method: :delete

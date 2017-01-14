@@ -1,0 +1,12 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+      = link_to t('application_name'), root_path, class: 'navbar-brand'
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li
+      ul.nav.navbar-nav.navbar-right
+        li= link_to t('menu.sign_in'), new_user_session_path, method: :get
+        li= link_to t('menu.sign_up'), new_user_registration_path, method: :get
