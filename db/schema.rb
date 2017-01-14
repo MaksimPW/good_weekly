@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231184239) do
+ActiveRecord::Schema.define(version: 20170114125233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "author"
+    t.text     "comment"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_books_on_user_id", using: :btree
+  end
+
+  create_table "books_good_weeks", id: false, force: :cascade do |t|
+    t.integer "book_id",      null: false
+    t.integer "good_week_id", null: false
+    t.index ["book_id", "good_week_id"], name: "index_books_good_weeks_on_book_id_and_good_week_id", using: :btree
+    t.index ["good_week_id", "book_id"], name: "index_books_good_weeks_on_good_week_id_and_book_id", using: :btree
+  end
 
   create_table "good_weeks", force: :cascade do |t|
     t.date     "monday",     null: false
@@ -41,5 +60,6 @@ ActiveRecord::Schema.define(version: 20161231184239) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "books", "users"
   add_foreign_key "good_weeks", "users"
 end

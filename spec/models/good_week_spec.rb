@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe GoodWeek, type: :model do
   it { should validate_presence_of(:monday) }
   it { should belong_to(:user) }
+  it { should have_and_belong_to_many(:books) }
 
   describe 'self.find_by_number_of_year_and_week' do
     let!(:user) { create(:user) }
