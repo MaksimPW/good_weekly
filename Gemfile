@@ -39,6 +39,7 @@ gem 'bootstrap-sass'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'simple_calendar', '~> 2.2'
 gem 'pundit'
+gem 'simple_form', '~> 3.3.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
