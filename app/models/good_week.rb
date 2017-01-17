@@ -8,6 +8,10 @@ class GoodWeek < ApplicationRecord
     self.find_by_monday(monday)
   end
 
+  def name
+    "#{number_of_year} week #{year}"
+  end
+
   def number_of_year
     monday.cweek
   end
