@@ -7,7 +7,9 @@
     = f.input :comment
     p Weeks:
     - book.good_weeks.each do |week|
-      p= link_to week.name, week_path(week.year, week.number_of_year)
-    = text_field_tag(:good_week_mondays)
+      p
+        = link_to week.name, week_path(week.year, week.number_of_year)
+        a.close class="close-week" data-monday=week.monday [x]
+    = text_field_tag(:good_week_mondays, book.good_weeks.map(&:monday), class: 'hidden')
     br
     = f.button :submit, class: 'btn btn-primary'
