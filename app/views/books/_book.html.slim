@@ -1,0 +1,23 @@
+.well.col-md-4
+  span class = 'glyphicon glyphicon-book'
+  = simple_form_for book, defaults: { input_html: { class: 'form-control' } } do |f|
+    = f.input :name
+    = f.input :description
+    = f.input :author
+    = f.input :comment
+    br
+      label Weeks:
+      div.weeks
+        - book.good_weeks.each do |week|
+          p
+            = link_to week.name, week_path(week.year, week.number_of_year)
+            a.close class="close-week" data-monday=week.monday [x]
+    .add-weeks
+      label for="weekpicker" Select new week
+      input type="text" id="weekpicker" name="weekpick" class="form-control" readonly="readonly"
+      a.add-week
+        | Add week
+        span class='glyphicon glyphicon-plus'
+    = text_field_tag(:good_week_mondays, book.good_weeks.map(&:monday), class: 'hidden')
+    br
+    = f.button :submit, class: 'btn btn-primary'

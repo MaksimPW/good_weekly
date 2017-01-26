@@ -1,4 +1,11 @@
 h1
-  = "#{@good_week.number_of_year} неделя #{@good_week.monday.year}"
+  = @good_week.name
 = week_calendar number_of_weeks: 1 do |date|
   = date
+div
+  .well.col-md-6
+    h2 Books
+    - @good_week.books.each do |book|
+      .well
+        p= book.name
+    = link_to 'Add Book', new_book_path(params.permit.merge({good_week_ids: [@good_week.id]}))

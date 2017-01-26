@@ -10,8 +10,8 @@ nav.navbar.navbar-default
           = link_to t('menu.current_week'), current_week_path
         li
           = link_to t('menu.calendar'), root_path
-        li
-          = link_to t('menu.books'), root_path
+        li class=('active' if current_page?(controller: :books))
+          = link_to t('menu.books'), books_path
         li
           = link_to t('menu.persons'), root_path
       ul.nav.navbar-nav.navbar-right
