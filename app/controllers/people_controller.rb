@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
 
   private
   def set_weeks
-    return unless params[:good_week_ids].present?
+    return unless params[:good_week_mondays].present?
     good_week_ids = Array.new
     week_mondays = params[:good_week_mondays].split.map { |m| m.to_date }
     unless week_mondays.empty?
