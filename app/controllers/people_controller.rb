@@ -1,4 +1,4 @@
-class PersonsController < ApplicationController
+class PeopleController < ApplicationController
   before_action :authenticate_user!
   before_action :set_weeks, only: [:update, :create]
   before_action :load_person, only: [:show, :edit, :update, :destroy]
@@ -20,7 +20,7 @@ class PersonsController < ApplicationController
     @person.user = current_user
     authorize @person
     if @person.save
-      redirect_to person_path(@person)
+      redirect_to people_path(@person)
     end
   end
 
@@ -31,14 +31,14 @@ class PersonsController < ApplicationController
   def update
     authorize @person
     if @person.update_attributes(person_params)
-      redirect_to person_path(@person)
+      redirect_to people_path(@person)
     end
   end
 
   def destroy
     authorize @person
     if @person.delete
-      redirect_to persons_path
+      redirect_to people_path
     end
   end
 
