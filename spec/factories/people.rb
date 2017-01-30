@@ -4,6 +4,6 @@ FactoryGirl.define do
     birthday "2017-01-30"
     description "Хороший человек"
     note "Познакомились на улице"
-    user nil
+    user
   end
 end
