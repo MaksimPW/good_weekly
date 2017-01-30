@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114125233) do
+ActiveRecord::Schema.define(version: 20170130031151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,24 @@ ActiveRecord::Schema.define(version: 20170114125233) do
     t.index ["user_id"], name: "index_good_weeks_on_user_id", using: :btree
   end
 
+  create_table "good_weeks_people", id: false, force: :cascade do |t|
+    t.integer "person_id",    null: false
+    t.integer "good_week_id", null: false
+    t.index ["good_week_id", "person_id"], name: "index_good_weeks_people_on_good_week_id_and_person_id", using: :btree
+    t.index ["person_id", "good_week_id"], name: "index_good_weeks_people_on_person_id_and_good_week_id", using: :btree
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string   "fio"
+    t.date     "birthday"
+    t.text     "description"
+    t.text     "note"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_people_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -62,4 +80,5 @@ ActiveRecord::Schema.define(version: 20170114125233) do
 
   add_foreign_key "books", "users"
   add_foreign_key "good_weeks", "users"
+  add_foreign_key "people", "users"
 end
