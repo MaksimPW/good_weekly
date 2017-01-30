@@ -12,7 +12,7 @@ nav.navbar.navbar-default
           = link_to t('menu.calendar'), root_path
         li class=('active' if current_page?(controller: :books))
           = link_to t('menu.books'), books_path
-        li
+        li class=('active' if current_page?(controller: :people))
           = link_to t('menu.persons'), people_path
       ul.nav.navbar-nav.navbar-right
         li= link_to t('menu.sign_out'), destroy_user_session_path, method: :delete
