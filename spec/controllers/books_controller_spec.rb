@@ -67,7 +67,7 @@ RSpec.describe BooksController, type: :controller do
     before { sign_in_helper user }
 
     it 'change record count in the database' do
-      expect { get :create, params: { book: attributes_for(:book) } }.to change(Book, :count).by(1)
+      expect { post :create, params: { book: attributes_for(:book) } }.to change(Book, :count).by(1)
     end
   end
 
