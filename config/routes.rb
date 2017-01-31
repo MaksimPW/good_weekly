@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'week/:year/:week', to: 'good_weeks#show', as: 'week'
   resources :books
   resources :people
+  resources :good_weeks
 end

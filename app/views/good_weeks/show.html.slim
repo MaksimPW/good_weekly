@@ -13,3 +13,11 @@ div
     - @good_week.persons.each do |person|
       p= link_to person.fio, people_path(person)
     = link_to 'Add Person', new_person_path(params.permit.merge({good_week_ids: [@good_week.id]}))
+
+  .well.col-md-12
+    span class = 'glyphicon glyphicon-person'
+    = simple_form_for @good_week, defaults: { input_html: { class: 'form-control' } } do |f|
+      = f.input :monday, as: :hidden, input_html: { value: @good_week.monday }
+      = f.input :note
+      br
+      = f.button :submit, class: 'btn btn-primary'
