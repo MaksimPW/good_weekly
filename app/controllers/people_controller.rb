@@ -1,44 +1,44 @@
-class BooksController < ApplicationController
+class PeopleController < ApplicationController
   before_action :authenticate_user!
   before_action :set_weeks, only: [:update, :create]
-  before_action :load_book, only: [:show, :edit, :update, :destroy]
+  before_action :load_person, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.where(user: current_user)
+    @persons = Person.where(user: current_user)
   end
 
   def show
-    authorize @book
+    authorize @person
   end
 
   def new
-    authorize @book = Book.new
+    authorize @person = Person.new
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user = current_user
-    authorize @book
-    if @book.save
-      redirect_to book_path(@book)
+    @person = Person.new(person_params)
+    @person.user = current_user
+    authorize @person
+    if @person.save
+      redirect_to people_path(@person)
     end
   end
 
   def edit
-    authorize @book
+    authorize @person
   end
 
   def update
-    authorize @book
-    if @book.update_attributes(book_params)
-      redirect_to book_path(@book)
+    authorize @person
+    if @person.update_attributes(person_params)
+      redirect_to people_path(@person)
     end
   end
 
   def destroy
-    authorize @book
-    if @book.delete
-      redirect_to books_path
+    authorize @person
+    if @person.delete
+      redirect_to people_path
     end
   end
 
@@ -60,14 +60,14 @@ class BooksController < ApplicationController
         end
       end
     end
-    params[:book][:good_week_ids] = good_week_ids
+    params[:person][:good_week_ids] = good_week_ids
   end
 
-  def book_params
-    params.require(:book).permit(:name, :description, :author, :comment, :rating, good_week_ids: [])
+  def person_params
+    params.require(:person).permit(:fio, :birthday, :description, :note, good_week_ids: [])
   end
 
-  def load_book
-    @book = Book.find(params[:id])
+  def load_person
+    @person = Person.find(params[:id])
   end
 end
