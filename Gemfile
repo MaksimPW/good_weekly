@@ -43,6 +43,7 @@ gem 'simple_form', '~> 3.3.0'
 gem 'jquery-ui-rails'
 gem 'rails_12factor'
 gem 'dotenv'
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
