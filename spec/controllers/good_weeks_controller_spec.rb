@@ -41,5 +41,29 @@ RSpec.describe GoodWeeksController, type: :controller do
         expect(assigns(:good_week).monday).to eq new_week.monday
       end
     end
+
+    describe 'POST #create' do
+      before { sign_in_helper user }
+
+      it 'change record count in the database' do
+        expect { post :create, params: { good_week: attributes_for(:good_week) } }.to change(GoodWeek, :count).by(1)
+      end
+    end
+
+    describe 'PATCH #update' do
+      let!(:good_week) { create(:good_week, monday: Date.new(2016, 1, 4), user: user) }
+      before { sign_in_helper user }
+
+      it 'assigns the requested good_week to @good_week' do
+        patch :update, params: { id: good_week, good_week: attributes_for(:good_week) }
+        expect(assigns(:good_week)).to eq good_week
+      end
+
+      it 'change week attrs' do
+        patch :update, params: { id: good_week, good_week: { note: 'update' } }
+        good_week.reload
+        expect(good_week.note).to eq 'update'
+      end
+    end
   end
 end
