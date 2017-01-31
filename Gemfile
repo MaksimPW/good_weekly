@@ -41,6 +41,7 @@ gem 'simple_calendar', '~> 2.2'
 gem 'pundit'
 gem 'simple_form', '~> 3.3.0'
 gem 'jquery-ui-rails'
+gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
