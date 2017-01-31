@@ -10,8 +10,5 @@ class CreatePeople < ActiveRecord::Migration[5.0]
       t.timestamps
 
     end
-
-    add_index :good_weeks_people, [:person_id, :good_week_id]
-    add_index :good_weeks_people, [:good_week_id, :person_id]
   end
 end
